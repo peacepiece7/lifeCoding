@@ -32,7 +32,7 @@ thier : client
 <br>
 <br>
 
-- create application
+create application
 
 Client ID : 1
 Client Secret : 2
@@ -130,12 +130,12 @@ let Resouce_Server : {
 
 <br>
 
-resourve_server에서 id, avatarUrl을 받아올 것임 이를 B,C라 가정
-github 로그인 하기 버튼을 클릭, 동의하면 아래의 링크로 resourve owner 정보를 전송 
+resourve_server에서 id, avatarUrl을 받아올 것임 이를 B,C라 가정   
+github 로그인 하기 버튼을 클릭, 동의하면 아래의 링크로 resourve owner 정보를 전송  
 ```
 https://resourve.server/?client_id=1&scope=B,C&redirect_url=https://github/auth/callback
 ```
-resouce server는 resourve owner의 ID와 scope : B, C에 동의 했음을 알게 됨 
+resouce server는 resourve owner의 ID와 scope : B, C에 동의 했음을 알게 됨  
 
 ```js
 // resourve server
@@ -155,8 +155,8 @@ let Resouce_Server : {
 
 <br>
 
-임시 비밀번호 authorization code : 3 을 resouce owner에서 보냄
-client는 은밀하게 code =3 이라는 주소로 리다이렉트함
+임시 비밀번호 authorization code : 3 을 resouce owner에서 보냄  
+client는 은밀하게 code =3 이라는 주소로 리다이렉트함  
 
 ```
 // redirect address
@@ -166,8 +166,8 @@ location : https://client/callback?code=3
 
 <br>
  
-client는 authorization code = 3을 알게 됨 
-네 가지 방식이 더 있다고 함
+client는 authorization code = 3을 알게 됨  
+네 가지 방식이 더 있다고 함  
 
 <br>
 
@@ -183,8 +183,6 @@ let Client : {
 ```
 
 client는 Authorization_code와 client 정보를 조합해서 resouce server에게 보냄  
-
-
 resouce server는 Authorization_code와 client_Id, Client_Secret이 일치하는 resouce owner에 대한 access token을 
 client에게 발급해줌
 
@@ -195,7 +193,7 @@ client에게 발급해줌
 <br>
 
 또 다시 인증하지 않게 authorization_code를 지우고 accessToken을 발급  
-access token은 user_id : 1에 대한 scope : [B, C]의 접근을 허용함
+access token은 user_id : 1에 대한 scope : [B, C]의 접근을 허용함  
 
 ```js
 // client
@@ -224,18 +222,17 @@ let Resouce_Server : {
 <br>
 <br>
 
-Client가 resource server를 handling하는 방식 => API  
+Client가 resource server를 handling하는 방식 => API   
 for instance : google platform, AWS,,,
 
 <br>
 
 location : authorization이라 뜨면 access token을 발급 받아야 함 
-
 google calender api로 예로 두 가지 방식이 있음  
 
 <br>
 
-1. URL redirection뒤에 access_token을 입력하는 방식
+1. URL redirection뒤에 access_token을 입력하는 방식  
 
 <br>
 
@@ -245,7 +242,7 @@ https://www.googleapis.com/calender/v3/users/me/calenderList?access_token=askzkc
 
 <br>
 
-2. 헤더 값으로 보냄
+2. 헤더 값으로 보냄  
 
 <br>
 
@@ -254,11 +251,11 @@ curl이라는 프로그램을 사용  (curl은 html을 파싱, 화면에 출력�
 
 <br>
 
-cmd에 아래와 같이 입력하여 api를 호출(실제 access token은 훨~씬 더 김)
+cmd에 아래와 같이 입력하여 api를 호출(실제 access token은 훨~씬 더 김)  
 ```
 curl -H "Authorization:Bearer askzkck12" https://www.googleapis.com/calender/v3/users/me/calenderList
 ```
-> node js로 curl를 사용하려면 변환 과정을 거쳐야 함
+> node js로 curl를 사용하려면 변환 과정을 거쳐야 함  
 
 <br>
 <br>
@@ -286,7 +283,7 @@ APIs마다 refresh 방법을 제공하고 있음, 위의 문서를 읽고 관련
 <br>
 
 - login with facebook, login with google이 이에 해당  
-- oauth의 궁극정 목적은 api를 다루는 것
-- 사회적 app을 만들기 위해 oauth는 필수적임
-- restful, json, xml 배경 지식은
+- oauth의 궁극정 목적은 api를 다루는 것  
+- 사회적 app을 만들기 위해 oauth는 필수적임  
+- restful, json, xml 배경 지식은  
 
