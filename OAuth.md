@@ -1,5 +1,8 @@
 # Intro
 
+<br>
+<br>
+
 User(cumstomer) : logged user  
 thier(service provider) : gogle, facebook. kakao talk...  
 mine(server) : localhost:xxxx,,,   
@@ -15,6 +18,7 @@ access token을 thier(servie provider)에게 얻는 것이 핵심 목표
 # role
 
 <br>
+<br>
 
 thier : resource server  
 User : resource owner, authorization server ( 데이터를 가지고 있는 서버, 권한 인증을 해주는 서버 )  
@@ -25,6 +29,7 @@ thier : client
 
 # register
 
+<br>
 <br>
 
 - create application
@@ -51,6 +56,9 @@ passport.use(
   )
 );
 ```
+
+<br>
+
 ```js
 export const githubLoginCallback = async (
   accessToken,
@@ -88,6 +96,8 @@ export const githubLoginCallback = async (
 const GITHUB ="/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 ```
+<br>
+<br>
 
 # resource owner의 승인
 
@@ -96,6 +106,8 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 
 
 1. create app을 한다.  
+
+<br>
 
 아래와 같은 정보를 client, resouce server가 공유하게 됨
 redirect_URL을 client가 구현해 놔야 한다.
@@ -112,7 +124,11 @@ let Resouce_Server : {
 }
 ```
 
+<br>
+
 2. resource owner가 login 동의 인증
+
+<br>
 
 resourve_server에서 id, avatarUrl을 받아올 것임 이를 B,C라 가정
 github 로그인 하기 버튼을 클릭, 동의하면 아래의 링크로 resourve owner 정보를 전송 
@@ -132,17 +148,12 @@ let Resouce_Server : {
   Scope : [B, C]
 }
 ```
-<br>
-<br>
-<br>
 
-
+<br>
 
 3. resource server의 동의
 
 <br>
-<br>
-
 
 임시 비밀번호 authorization code : 3 을 resouce owner에서 보냄
 client는 은밀하게 code =3 이라는 주소로 리다이렉트함
@@ -177,7 +188,11 @@ client는 Authorization_code와 client 정보를 조합해서 resouce server에�
 resouce server는 Authorization_code와 client_Id, Client_Secret이 일치하는 resouce owner에 대한 access token을 
 client에게 발급해줌
 
+<br>
+
 4. access token
+
+<br>
 
 또 다시 인증하지 않게 authorization_code를 지우고 accessToken을 발급  
 access token은 user_id : 1에 대한 scope : [B, C]의 접근을 허용함
@@ -201,7 +216,13 @@ let Resouce_Server : {
 }
 ```
 
+<br>
+<br>
+
 # API (application program interface)
+
+<br>
+<br>
 
 Client가 resource server를 handling하는 방식 => API  
 for instance : google platform, AWS,,,
@@ -222,7 +243,11 @@ google calender api로 예로 두 가지 방식이 있음
 https://www.googleapis.com/calender/v3/users/me/calenderList?access_token=askzkck12
 ```
 
+<br>
+
 2. 헤더 값으로 보냄
+
+<br>
 
 curl이라는 프로그램을 사용  (curl은 html을 파싱, 화면에 출력해줌)  
 `ex) curl https://opentutorials.org`
@@ -235,7 +260,13 @@ curl -H "Authorization:Bearer askzkck12" https://www.googleapis.com/calender/v3/
 ```
 > node js로 curl를 사용하려면 변환 과정을 거쳐야 함
 
+<br>
+<br>
+
 # refresh token
+
+<br>
+<br>
 
 - refresh token
 access token은 며칠, 몇 달씩 우효 기간이 있음  
@@ -246,7 +277,13 @@ access token은 며칠, 몇 달씩 우효 기간이 있음
 
 APIs마다 refresh 방법을 제공하고 있음, 위의 문서를 읽고 관련 정보를 보내 주면 된다.
 
+<br>
+<br>
+
 # federated identity technology
+
+<br>
+<br>
 
 - login with facebook, login with google이 이에 해당  
 - oauth의 궁극정 목적은 api를 다루는 것
