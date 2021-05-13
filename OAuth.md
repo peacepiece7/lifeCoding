@@ -284,3 +284,7 @@ APIs마다 refresh 방법을 제공하고 있음, 위의 문서를 읽고 관련
 - 사회적 app을 만들기 위해 oauth는 필수적임  
 - restful, json, xml 배경 지식은  
 
+# bearer toekn usage
+
+[생활코딩 bearer token usage](https://gist.github.com/egoing/cac3d6c8481062a7e7de327d3709505f)를 참조
+
