@@ -155,7 +155,7 @@ let Resouce_Server : {
 
 <br>
 
-임시 비밀번호 authorization code : 3 을 resouce owner에서 보냄  
+임시 비밀번호 authorization code : 3 을 resouce owner에서 보냄   
 client는 은밀하게 code =3 이라는 주소로 리다이렉트함  
 
 ```
