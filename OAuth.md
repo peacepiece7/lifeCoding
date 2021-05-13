@@ -1,8 +1,5 @@
 # Intro
 
-<br>
-<br>
-
 User(cumstomer) : logged user  
 thier(service provider) : gogle, facebook. kakao talk...  
 mine(server) : localhost:xxxx,,,   
@@ -17,9 +14,6 @@ access token을 thier(servie provider)에게 얻는 것이 핵심 목표
 
 # role
 
-<br>
-<br>
-
 thier : resource server  
 User : resource owner, authorization server ( 데이터를 가지고 있는 서버, 권한 인증을 해주는 서버 )  
 thier : client  
@@ -28,9 +22,6 @@ thier : client
 <br>
 
 # register
-
-<br>
-<br>
 
 create application
 
@@ -101,10 +92,6 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 
 # resource owner의 승인
 
-<br>
-<br>
-
-
 1. create app을 한다.  
 
 <br>
@@ -123,8 +110,6 @@ let Resouce_Server : {
   Redirect_URL : "https://client/github/auth/callback"
 }
 ```
-
-<br>
 
 2. resource owner가 login 동의 인증
 
@@ -149,8 +134,6 @@ let Resouce_Server : {
 }
 ```
 
-<br>
-
 3. resource server의 동의
 
 <br>
@@ -165,12 +148,9 @@ location : https://client/callback?code=3
 ```
 
 <br>
- 
+
 client는 authorization code = 3을 알게 됨  
 네 가지 방식이 더 있다고 함  
-
-<br>
-
 ```
 // client
 
@@ -185,8 +165,6 @@ let Client : {
 client는 Authorization_code와 client 정보를 조합해서 resouce server에게 보냄  
 resouce server는 Authorization_code와 client_Id, Client_Secret이 일치하는 resouce owner에 대한 access token을 
 client에게 발급해줌
-
-<br>
 
 4. access token
 
@@ -219,9 +197,6 @@ let Resouce_Server : {
 
 # API (application program interface)
 
-<br>
-<br>
-
 Client가 resource server를 handling하는 방식 => API   
 for instance : google platform, AWS,,,  
 
@@ -234,8 +209,6 @@ google calender api로 예로 두 가지 방식이 있음
 
 1. URL redirection뒤에 access_token을 입력하는 방식  
 
-<br>
-
 ```
 https://www.googleapis.com/calender/v3/users/me/calenderList?access_token=askzkck12
 ```
@@ -243,8 +216,6 @@ https://www.googleapis.com/calender/v3/users/me/calenderList?access_token=askzkc
 <br>
 
 2. 헤더 값으로 보냄  
-
-<br>
 
 curl이라는 프로그램을 사용  (curl은 html을 파싱, 화면에 출력해줌)  
 `ex) curl https://opentutorials.org`   
@@ -259,8 +230,6 @@ curl -H "Authorization:Bearer askzkck12" https://www.googleapis.com/calender/v3/
 
 # refresh token
 
-<br>
-<br>
 
 - refresh token
 access token은 며칠, 몇 달씩 우효 기간이 있음   
@@ -276,13 +245,13 @@ APIs마다 refresh 방법을 제공하고 있음, 위의 문서를 읽고 관련
 
 # federated identity technology
 
-<br>
-<br>
-
 - login with facebook, login with google이 이에 해당  
 - oauth의 궁극정 목적은 api를 다루는 것  
 - 사회적 app을 만들기 위해 oauth는 필수적임  
 - restful, json, xml 배경 지식은  
+
+<br>
+<br>
 
 # bearer toekn usage
 
