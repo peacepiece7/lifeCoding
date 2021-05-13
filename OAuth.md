@@ -223,11 +223,11 @@ let Resouce_Server : {
 <br>
 
 Client가 resource server를 handling하는 방식 => API   
-for instance : google platform, AWS,,,
+for instance : google platform, AWS,,,  
 
 <br>
 
-location : authorization이라 뜨면 access token을 발급 받아야 함 
+location : authorization이라 뜨면 access token을 발급 받아야 함  
 google calender api로 예로 두 가지 방식이 있음  
 
 <br>
@@ -247,10 +247,7 @@ https://www.googleapis.com/calender/v3/users/me/calenderList?access_token=askzkc
 <br>
 
 curl이라는 프로그램을 사용  (curl은 html을 파싱, 화면에 출력해줌)  
-`ex) curl https://opentutorials.org`
-
-<br>
-
+`ex) curl https://opentutorials.org`   
 cmd에 아래와 같이 입력하여 api를 호출(실제 access token은 훨~씬 더 김)  
 ```
 curl -H "Authorization:Bearer askzkck12" https://www.googleapis.com/calender/v3/users/me/calenderList
@@ -266,11 +263,11 @@ curl -H "Authorization:Bearer askzkck12" https://www.googleapis.com/calender/v3/
 <br>
 
 - refresh token
-access token은 며칠, 몇 달씩 우효 기간이 있음  
+access token은 며칠, 몇 달씩 우효 기간이 있음   
 다시 발급 받을 때 인증과정을 줄여주는 역할을 함  
 
-[datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc6749#section-1.5)
-[oauth 2.0](https://oauth.net/2/)
+[datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc6749#section-1.5)  
+[oauth 2.0](https://oauth.net/2/)  
 
 APIs마다 refresh 방법을 제공하고 있음, 위의 문서를 읽고 관련 정보를 보내 주면 된다.
 
