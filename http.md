@@ -118,3 +118,4 @@ Content-Security-Policy
 500 : internal server error,
 ```
 
+response를 보면 웹브라우저가 client에게 받은 정보를 어떻게 이해하고 있는지를 알 수 있다.
