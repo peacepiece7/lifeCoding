@@ -119,3 +119,24 @@ Content-Security-Policy
 ```
 
 response를 보면 웹브라우저가 client에게 받은 정보를 어떻게 이해하고 있는지를 알 수 있다.
+
+> 앞으로 찾아 볼 것들
+http , https의 차이
+-> 인터넷의 도로 같은 느낌
+-> 얄코 참고 
+
+cache
+-> 중복되는 내용을 브라우져에 저장해 둠
+--> cache control, pragma
+
+cookie
+-> 장바구니 담기, 로그인 했다를 기억하는 기술
+-> 쿠키값을 설정 -> 접속마다 서버에 전송 -> 사용자 식별
+--> web storage로 바런
+
+proxy
+-> 프락시, 중간 서버( 캐시, 보안, 서비스 분산)... 등등
+
+monitoring tool
+-> developer tool ( insepct로 들어가는 거)
+-> wire shark ( 오픈소스 제공, 강력, 따로 공부해야 함)
