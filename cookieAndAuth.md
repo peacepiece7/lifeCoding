@@ -22,17 +22,11 @@ nodeJs로 실습
 
 # 쿠키의 생성 (Crud)
 
-cookie는 http protocol에서 제공하는 기능.
+**cookie는 http protocol에서 제공하는 기능**
 
 [MDN cookie](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
 
-```js
-const http : {
-              cookie : { auth , check, independent },
-            }
-```
-
-cookie.js 파일 생성
+cookie.js 파일 생성 아래와 같이 작성
 
 ```js
 // cookie.js
@@ -46,7 +40,8 @@ http.createServer(function(request, response) {
 }).listen(3000);
 ```
 
-express, babel을 쓴다면 아래와 같을 듯
+🍗🍖 express, babel을 쓴다면 아래와 같을 듯 이 부분은 나중에 직접 실습해보자!! 🍗🍖
+
 ```js
 import express from "express";
 
@@ -59,6 +54,11 @@ app.use('/', (req,res) => {
   
 app.listen(3000)
 ```
+
+<br>
+<br>
+
+### Developer Tool 
 
 위의 코드를 실행한 후
 inspect에 들어가서 network tap을 보면 
@@ -86,25 +86,16 @@ Cookie : tasty_cookie=strawbery
 > 4. server에서 cookie를 지우면?
 >  > server가 cookie를 응답하지 않고 browser가 저장한 쿠기가 있다면 요청하지만, 없다면 요청하지 않음
 
-
-추가로
-
-yummy_cookie, tasty..나 ninja는 예약어로 작동하지만 그외 단어는 보안상? 작동하지 않는 듯 하다. 
-
-```js
-response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
-```
-(nodeJs setHeader, writeHead)[https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_response_setheader_name_value]
-
 <br>
 <br>
 <br>
 
 # 쿠키 읽기 (cRud)
 
-npm cookie-parser, cookie 도 있고 how to read cookie in nodejs검색 stackoverflow에서 찾을 수도 있고 다양함
+`npm install cookie` 하고 아래와 같이 작성하여 cookie를 객체나 메서드로 호출할 수 있음
 
-아래와 같이 작성하여 cookie를 객체나 메서드로 호출할 수 있음
+parser는 undifinded일 경우 에러가 나니까 if문으로 작성
+
 ```js
 var http = require('http');
 var cookie = require('cookie');
@@ -122,7 +113,7 @@ http.createServer(function(request, response){
 }).listen(3000);
 ```
 
-parser는 undifinded일 경우 에러가 나니까 위와 같이 if문을 작성
+
 
 <br>
 <br>
@@ -132,23 +123,34 @@ parser는 undifinded일 경우 에러가 나니까 위와 같이 if문을 작성
 
 (MDN HTTP cookies)[https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies]
 
-> MDN에서 en-US로 언어를 변경하고 다시 키면, inspect -> app -> stroage -> cookies에 en-US가 저장되면서 영어로 번역됨
-> 다시 MDN에서 KO로 언어를 변경하고 다시 키면, inspect -> app -> stroage -> cookies에 KO가 저장되면서 한국어로 번역됨
+<br>
+<br>
 
-MDN에 로그인 했을 떄, 
-session id 생성 (adjzoxcji123ioasd)이런 해시 값
+### en-US cookie <-> KO cookie
 
-아래를 보면 로그인 후 user_session : { value : SKxkzc12ekasd... } 이런 값이 있고 DB에 일치하는 id가 있다면 로그인 됨
+> MDN에서 en-US로 언어를 변경하면 영어로 번역됨
+>  > inspect -> app -> stroage -> cookies에 **en-US cookie**가 저장되어 있슴
+> MDN에서 KO로 언어를 변경하면 한국어로 번역됨
+>  > inspect -> app -> stroage -> cookies에 **KO cookie**가 저장되면서
+
+<br>
+<br>
+
+### user_session, 보안이 중요한 이유
+
+MDN에 로그인 했을 떄  
+
+`user_session : adjzoxcji123ioasd...`이런 값(value)이 생성 DB에 일치하는 value가 있다면 로그인 됨
 
 (비밀번호, 아아디는 쿠키에 저장하지 않음)
 
 ![로구인후 쿠키](https://user-images.githubusercontent.com/73880776/119075004-024ea280-ba2b-11eb-8b9b-581616a004b1.GIF)
 
-만약 아래와 같이 logout된 상태에서 user_session : { value : SKxkzc12ekasd... }를 그대로 입력한다면?   
+만약 아래와 같이 logout된 상태에서 user_session : { value : adjzoxcji123ioasd... }를 만들어 그대로 입력한다면?   
 
-로그인이 된다...
+**로그인이 된다**
 
-만약 session id가 노출된다면 큰 보안사고로 이어진다
+만약 user_session이 노출된다면 큰 보안사고로 이어진다
 
 ![로그인전 쿠키](https://user-images.githubusercontent.com/73880776/119075206-607b8580-ba2b-11eb-845c-dbef245a97e8.GIF)
 
@@ -159,12 +161,12 @@ session id 생성 (adjzoxcji123ioasd)이런 해시 값
 # Permanent Cookie & Session Cookie
 
 
-permanenet cookie
+**permanenet cookie**
 - language change
 - 껏다 켜도 설정이 유지
 - session cookie에 Expires, Max-Age 값을 설정해주면 permancent cookie가 됨
 
-Session Cookie
+**Session Cookie**
 - login 
 - 브라우저를 종료하면 쿠키가 사라짐
 
@@ -207,9 +209,9 @@ res.write(...) 로 Set-Cookie할 수 있음 이건 직접 해보자
 
 # 쿠키 옵션 - Secure & HttpOnly
 
-Secure : https에서만 cookie를 response함 ( https가 아니면 inspect에 cookie가 없음  
+**Secure** : https에서만 cookie를 response함 ( https가 아니면 inspect에 cookie가 없음  
 
-HttpOnly : http을 통해서만 cookie를 request함 ( inspect에 cookie가 있음 )
+**HttpOnly** : http을 통해서만 cookie를 request함 ( inspect에 cookie가 있음 )
 
 ```js
 // cookie.js
@@ -244,6 +246,11 @@ http.createServer(function(request, response){
 
 # 쿠키 옵션 path, & domain
 
+<br>
+<br>
+
+### path 옵션
+
 path 옵션은 해당 디렉터리 + 하위 디렉터리에서 쿠키를 request하는 옵션
 
 writeHead에 `path=path; path=/cookie` 입력
@@ -255,6 +262,11 @@ writeHead에 `path=path; path=/cookie` 입력
 >  >  "path" cookie가 있음
 > 3. http:localhost:3000/cookie/api로 접속
 >  >  "path" cookie가 있음
+ 
+<br>
+<br>
+ 
+## domain 옵션 
  
 domain 옵션은 해당 root domain이 어디까지 인지를 의미함
 
