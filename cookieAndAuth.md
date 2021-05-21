@@ -124,8 +124,11 @@ http.createServer(function(request, response){
 
 parser는 undifinded일 경우 에러가 나니까 위와 같이 if문을 작성
 
-# 쿠키의 활용
+<br>
+<br>
+<br>
 
+# 쿠키의 활용
 
 (MDN HTTP cookies)[https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies]
 
@@ -141,11 +144,33 @@ session id 생성 (adjzoxcji123ioasd)이런 해시 값
 
 ![로구인후 쿠키](https://user-images.githubusercontent.com/73880776/119075004-024ea280-ba2b-11eb-8b9b-581616a004b1.GIF)
 
-만약 아래와 같이 logout된 상태에서 user_session : { value : SKxkzc12ekasd... }를 그대로 입력한다면? 
+만약 아래와 같이 logout된 상태에서 user_session : { value : SKxkzc12ekasd... }를 그대로 입력한다면?   
+
 로그인이 된다...
-만약 session id가 노출된다면 큰 보안사고로 이어진다..
+
+만약 session id가 노출된다면 큰 보안사고로 이어진다
 
 ![로그인전 쿠키](https://user-images.githubusercontent.com/73880776/119075206-607b8580-ba2b-11eb-845c-dbef245a97e8.GIF)
+
+
+# Permanent Cookie & Session Cookie
+
+
+permanenet cookie
+- language change
+- 껏다 켜도 설정이 유지
+- session cookie에 Expires, Max-Age 값을 설정해주면 permancent cookie가 됨
+
+Session Cookie
+- login 
+- 브라우저를 종료하면 쿠키가 사라짐
+
+> 매번 request로 요청을 보내야 함 -> templete change
+> seesion cookie -> login(일회성)
+> permanent cookie -> lnaguage change(translator), cart list
+
+
+
 
 
 
