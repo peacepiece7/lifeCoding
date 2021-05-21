@@ -124,3 +124,28 @@ http.createServer(function(request, response){
 
 parser는 undifinded일 경우 에러가 나니까 위와 같이 if문을 작성
 
+# 쿠키의 활용
+
+
+(MDN HTTP cookies)[https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies]
+
+> MDN에서 en-US로 언어를 변경하고 다시 키면, inspect -> app -> stroage -> cookies에 en-US가 저장되면서 영어로 번역됨
+> 다시 MDN에서 KO로 언어를 변경하고 다시 키면, inspect -> app -> stroage -> cookies에 KO가 저장되면서 한국어로 번역됨
+
+MDN에 로그인 했을 떄, 
+session id 생성 (adjzoxcji123ioasd)이런 해시 값
+
+아래를 보면 로그인 후 user_session : { value : SKxkzc12ekasd } 이런 값이 있고 DB에 일치하는 id가 있다면 로그인 됨
+
+(비밀번호, 아아디는 쿠키에 저장하지 않음)
+
+![로구인후 쿠키](https://user-images.githubusercontent.com/73880776/119075004-024ea280-ba2b-11eb-8b9b-581616a004b1.GIF)
+
+만약 아래와 같이 logout된 상태에서 user_session : { value : SKxkzc12ekasd }를 그대로 입력한다면? 
+로그인이 된다...
+만약 session id가 노출된다면 큰 보안사고로 이어진다..
+
+
+
+
+
