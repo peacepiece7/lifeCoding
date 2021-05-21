@@ -1,16 +1,126 @@
 # 개인화
 
+**"웹 브라우져의 개인화" = 쿠키**
+
 장바구니, 로그인 유지
 
 웹 브라우저는 웹 서버로 "cookie"를 보냄으로 사용자를 식별할 수 있게 됨
 
+<br>
+<br>
+<br>
+
 # 실습 준비
+
+nodeJs로 실습
 
 [여기서 다운받기](https://github.com/web-n/Nodejs)
 
-# 쿠키의 생성
+<br>
+<br>
+<br>
 
-cookie는 http protocol에서 제공하는 기능임
+# 쿠키의 생성 (Crud)
+
+cookie는 http protocol에서 제공하는 기능.
 
 [MDN cookie](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
+
+```js
+const http : {
+              cookie : { auth , check, independent },
+            }
+```
+
+cookie.js 파일 생성
+
+```js
+// cookie.js
+
+var http = require('http');
+http.createServer(function(request, response) {
+  response.writeHead(200, {
+    'Set-Cookie: ['Yummycookie = choco', 'Tastycookie = strowberry']
+  });
+  response.end("Cookie!!")
+}).listen(3000);
+```
+
+express, babel을 쓴다면 아래와 같을 듯
+```js
+import express from "express";
+
+const app = express()
+
+app.use('/', (req,res) => {
+  res.setHeader("Set-Cookie" : ["yummy_cookie=choco, tasty_cookie=strawberry"]);
+  res.send("cookie!!")
+  })
+  
+app.listen(3000)
+```
+
+위의 코드를 실행한 후
+inspect에 들어가서 network tap을 보면 
+
+Response Header 에 아래와 같이 쿠기가 생성됨
+
+(server에서 browser에게 주는 데이터, browser의 응답)
+```
+Cookie : yummy_cookie=choco
+Cookie : tasty_cookie=strawbery
+```
+
+weiteHead를 지우고 다시 실행하면 request Header 에 아래와 같이 쿠키가 생성됨
+
+(browser에서 server에게 요청하는 데이터, browser의 요청)
+```
+Cookie : yummy_cookie=choco
+Cookie : tasty_cookie=strawbery
+```
+
+> 1. server에서 (root URL) browser로 cookie를 보냈고 browser가 이를 저장 (응답, response)
+> 2, browser가 root URL에서 실행될 때, 저장한 쿠키를 server로 보냄, 요청함 (요청, request)
+> 3. browser에 저장된 cookie를 지운다면?
+>  > browser가 server에 쿠키를 요청하지 않음
+> 4. server에서 cookie를 지우면?
+>  > server가 cookie를 응답하지 않고 browser가 저장한 쿠기가 있다면 요청하지만, 없다면 요청하지 않음
+
+
+추가로
+
+yummy_cookie, tasty..나 ninja는 예약어로 작동하지만 그외 단어는 보안상? 작동하지 않는 듯 하다. 
+
+```js
+response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
+```
+(nodeJs setHeader, writeHead)[https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_response_setheader_name_value]
+
+<br>
+<br>
+<br>
+
+# 쿠키 읽기 (cRud)
+
+npm cookie-parser, cookie 도 있고 how to read cookie in nodejs검색 stackoverflow에서 찾을 수도 있고 다양함
+
+아래와 같이 작성하여 cookie를 객체나 메서드로 호출할 수 있음
+```js
+var http = require('http');
+var cookie = require('cookie');
+http.createServer(function(request, response){
+    console.log(request.headers.cookie);
+    var cookies = {};
+    if(request.headers.cookie !== undefined){
+        cookies = cookie.parse(request.headers.cookie);
+    }
+    console.log(cookies.yummy_cookie);
+    response.writeHead(200, {
+        'Set-Cookie':['yummy_cookie=choco', 'tasty_cookie=strawberry']
+    });
+    response.end('Cookie!!');
+}).listen(3000);
+```
+
+parser는 undifinded일 경우 에러가 나니까 위와 같이 if문을 작성
 
