@@ -152,6 +152,9 @@ session id 생성 (adjzoxcji123ioasd)이런 해시 값
 
 ![로그인전 쿠키](https://user-images.githubusercontent.com/73880776/119075206-607b8580-ba2b-11eb-845c-dbef245a97e8.GIF)
 
+<br>
+<br>
+<br>
 
 # Permanent Cookie & Session Cookie
 
