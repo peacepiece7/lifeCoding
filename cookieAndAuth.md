@@ -183,8 +183,10 @@ http.createServer(function(request, response){
     console.log(cookies.yummy_cookie);
     response.writeHead(200, {
         'Set-Cookie':[
-            'yummy_cookie=choco', 
+            // session cookie
+            'yummy_cookie=choco',
             'tasty_cookie=strawberry',
+            // Permanent & Max-Age
             `Permanent=cookies; Max-Age=${60*60*24*30}`
         ]
     });
@@ -195,4 +197,104 @@ http.createServer(function(request, response){
 + express 쓸 때, nodejs 보면
 res.setHeader
 res.write(...) 로 Set-Cookie할 수 있음 이건 직접 해보자
+
+<br>
+<br>
+<br>
+
+# 쿠키 옵션 - Secure & HttpOnly
+
+Secure : https에서만 cookie를 response함 ( https가 아니면 inspect에 cookie가 없음  
+
+HttpOnly : http을 통해서만 cookie를 request함 ( inspect에 cookie가 있음 )
+
+```js
+// cookie.js
+
+var http = require('http');
+var cookie = require('cookie');
+http.createServer(function(request, response){
+    console.log(request.headers.cookie);
+    var cookies = {};
+    if(request.headers.cookie !== undefined){
+        cookies = cookie.parse(request.headers.cookie);
+    }
+    console.log(cookies.yummy_cookie);
+    response.writeHead(200, {
+        'Set-Cookie':[
+            'yummy_cookie=choco', 
+            'tasty_cookie=strawberry',
+            `Permanent=cookies; Max-Age=${60*60*24*30}`,
+            // Secure 
+            'Secure=Secure; Secure',
+            // HttpOnly
+            'HttpOnly=HttpOnly; HttpOnly'
+        ]
+    });
+    response.end('Cookie!!');
+}).listen(3000);
+```
+
+<br>
+<br>
+<br>
+
+# 쿠키 옵션 path, & domain
+
+path 옵션은 해당 디렉터리 + 하위 디렉터리에서 쿠키를 request하는 옵션
+
+writeHead에 `path=path; path=/cookie` 입력
+(inspect->network tap확인)
+
+> 1. http:localhost:3000/로 접속
+>  >  "path" cookie는 없음
+> 2. http:localhost:3000/cookie로 접속
+>  >  "path" cookie가 있음
+> 3. http:localhost:3000/cookie/api로 접속
+>  >  "path" cookie가 있음
+ 
+domain 옵션은 해당 root domain이 어디까지 인지를 의미함
+
+writeHead에 `domain=domain; domain=o2.org` 입력
+
+> 1. o2.org:3000 으로 접속
+>   >  디렉토리가 지정이 안된 쿠기들 ( path : / )은 모두 살아 있고 o2.org라고 표시
+>   >  domain cookie는 .o2.org라고 표시됨
+> 2. add.o2.org:3000 으로 접속
+>   > domain cookie 하나만 살아 있음
+>   > .o2.org앞에 어떤 문자가 오면 이걸 **sub domain**이라 부름
+
+```js
+var http = require('http');
+var cookie = require('cookie');
+http.createServer(function(request, response){
+    console.log(request.headers.cookie);
+    var cookies = {};
+    if(request.headers.cookie !== undefined){
+        cookies = cookie.parse(request.headers.cookie);
+    }
+    console.log(cookies.yummy_cookie);
+    response.writeHead(200, {
+        'Set-Cookie':[
+            'yummy_cookie=choco', 
+            'tasty_cookie=strawberry',
+            `Permanent=cookies; Max-Age=${60*60*24*30}`,
+            'Secure=Secure; Secure',
+            'HttpOnly=HttpOnly; HttpOnly',
+            // path option
+            // alive cookie in root & child root
+            'Path=Path; Path=/cookie',
+            // Domain option
+            // Specify root domain
+            'Domain=Domain; Domain=test.o2.org'
+        ]
+    });
+    response.end('Cookie!!');
+}).listen(3000);
+```
+
+
+
+
+
 
