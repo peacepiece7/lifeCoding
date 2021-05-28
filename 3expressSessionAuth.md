@@ -6,6 +6,9 @@
 
 [express-session github page](https://github.com/expressjs/session)
 
+<br>
+<br>
+<br>
 
 # Session object
 
@@ -50,7 +53,9 @@ if (req.session.num = undifined) {
   req.session.num += 1
 }
 ```
-
+<br>
+<br>
+<br>
 
 # Session Store 
 
@@ -89,6 +94,10 @@ router.post('/login_process', function (request, response) {
 sessions 폴더에 cookie가 생김!
 
 세션을 db에 저장할 떄, 이런 방식으로 해보고 저장하는 것도 좋을듯 
+
+<br>
+<br>
+<br>
 
 # 더 공부할 것들
 
