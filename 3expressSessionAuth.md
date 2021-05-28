@@ -84,7 +84,7 @@ router.post('/login_process', function (request, response) {
   } else {
     response.send('Who?');
   }
-  ```18SN–
+  ```
 
 sessions 폴더에 cookie가 생김!
 
@@ -98,7 +98,7 @@ httpOnly : true 사용자가 `<script>alret(${req.session})</script>` 처럼 tex
 
 secret key는 .env 파일에 저장해서 관리하기
 
-```
+```js
 app.use(session({
   secure : true,
   httpOnly : true,
@@ -107,4 +107,5 @@ app.use(session({
   saveUninitialized: true,
   store:new FileStore()
 }))
+
 ```
