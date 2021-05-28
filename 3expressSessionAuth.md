@@ -52,5 +52,11 @@ if (req.session.num = undifined) {
 ```
 
 
+# Session Store 
+
+Compatible Session Store 리스트에 보면
+
+각 db마다 plugin하는 방법이 나와 있음
+
 
 
