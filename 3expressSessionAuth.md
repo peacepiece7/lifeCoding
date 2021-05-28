@@ -17,7 +17,7 @@ import session from "express-session"
 
 const app = express();
 
-app.use(sesstion({
+app.use(session({
   secret : "aasSazcA22Sa1sSSsd22d4bng",
   resave : false,
   saveUnitalized : ture
