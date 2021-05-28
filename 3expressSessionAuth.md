@@ -58,5 +58,36 @@ Compatible Session Store 리스트에 보면
 
 각 db마다 plugin하는 방법이 나와 있음
 
+```js
+import session from "express-session";
+var FileStore = require('session-file-store')(session);
+// import FileStore from "sessopm-file-store";
+
+app.use(session({
+  secret: 'asadlfkj!@#!@#dfgasdg',
+  resave: false,
+  saveUninitialized: true,
+  store:new FileStore()
+}))
+```
+```js
+router.post('/login_process', function (request, response) {
+  var post = request.body;
+  var email = post.email;
+  var password = post.pwd;
+  if(email === authData.email && password === authData.password){
+    response.send('Welcome!');
+    request.session.is_logined = true;
+    request.session.nickname = authData.nickname;
+    request.session.save(); // async await처럼 session store에 session값 저장을 비동기로 저장 함 
+    response.redirect(`/`);
+  } else {
+    response.send('Who?');
+  }
+  ```18SN–
+
+sessions 폴더에 cookie가 생김!
+
+세션을 db에 저장할 떄, 이런 방식으로 해보고 저장하는 것도 좋을듯 
 
 
