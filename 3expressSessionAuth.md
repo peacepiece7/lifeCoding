@@ -90,4 +90,21 @@ sessions 폴더에 cookie가 생김!
 
 세션을 db에 저장할 떄, 이런 방식으로 해보고 저장하는 것도 좋을듯 
 
+# 더 공부할 것들
 
+secure : true 설정으로 https에서면 session정보를 이동하도록 만들어 줌, ( session id 보호) 
+
+httpOnly : true 사용자가 `<script>alret(${req.session})</script>` 처럼 textarea에 js코드를 사용할 수 없게 httpOnly설정을 해줘야 함
+
+secret key는 .env 파일에 저장해서 관리하기
+
+```
+app.use(session({
+  secure : true,
+  httpOnly : true,
+  secret: prosess.env.sessionSceret,
+  resave: false,
+  saveUninitialized: true,
+  store:new FileStore()
+}))
+```
