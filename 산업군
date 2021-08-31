@@ -1,0 +1,42 @@
+# 개발자 주요 산업군(도메인) 
+
+- 산업군 = 도메인,
+- 산업군의 하위 항목을 도메인 이라고 하기도 함,
+- si는 서바스 대행사니까 제외, 보안도 소수니까 제외
+
+
+# Content
+
+- SNS (kakao, facebook, instar)
+- Streaming (youtube, netflix, laftel )
+- Potal (Naver, Daum, Zum.. 검색, 컨텐츠 제공)
+- Infomation (뱅크샐러드, 강남언니, 로켓펀치, 원티드, 잡플레닛, 호객노노 .. )
+- Community (blind, naver cafe...)
+
+# Commerce ( 결제가 포함된 기능, 물류관리 )
+
+- Delivery (배민, 마켓컬리 )
+- Shopping (쿠팡, 네이버 스마트 스토어 )
+- P2P Market (중고나라, 번개장터, 당근마켓 )
+- Crowd Funding ( 와디즈, 텀블벅 )
+- Platform (인프런, 크몽, 직방)
+
+# FinTech ( 돈이 오가니까 정확성과, 트랙잭션 관련지식이 필요함)
+
+- Pay ( kakaopay, toss, PG사)
+- Banking ( 시중은행, 카카오 뱅크 ..)
+- Stock ( 두나무, 증권사 어플 )
+- P2P ( 8퍼샌트, 피플펀드 )
+  - 개인이 개인에게 돈일 빌려주는 서비스
+- Cryptocurrency ( 코인핀, 업비트, 빗썸 )
+
+# Mobility (지리 정보사용, GSP같은 하드웨어와의 연개가 중요)
+
+- Mobility (카카오택시, 따릉)
+- Car Sharing (타다, 쏘카)
+- Navigation (카카오 네이버 지도)
+- Self-driving (테슬라 등)
+
+# AL/ML
+- 발전속도가 빠름
+- 
